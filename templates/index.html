@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo Costo Uniforme</title>
+</head>
+<body>
+    <h1>Algoritmo Costo uniforme</h1>
+    <form action="/ejecutar_dijkstra" method="post">
+        <input type="submit" value="Ejecutar Costo Uniforme">
+    </form>
+    {% if resultado %}
+        <h2>Resultado:</h2>
+        <p>Ruta: {{ resultado }}</p>
+        <p>Costo del viaje: {{ costo_viaje }} KM</p>
+    {% endif %}
+</body>
+</html>
