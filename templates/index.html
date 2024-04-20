@@ -8,12 +8,21 @@
 <body>
     <h1>Algoritmo Costo uniforme</h1>
     <form action="/ejecutar_dijkstra" method="post">
-        <input type="submit" value="Ejecutar Costo Uniforme">
+        <input type="submit" value="Algoritmo Costo Uniforme">
     </form>
-    {% if resultado %}
-        <h2>Resultado:</h2>
-        <p>Ruta: {{ resultado }}</p>
-        <p>Costo del viaje: {{ costo_viaje }} KM</p>
+    <form action="/ejecutar_costo_uniforme" method="post">
+        <input type="submit" value="Algoritmo Dijkstra">
+    </form>
+    {% if resultado_dijkstra %}
+        <h2>Resultado Dijkstra:</h2>
+        <p>Ruta: {{ resultado_dijkstra }}</p>
+        <p>Costo del viaje: {{ costo_viaje_dijkstra }} KM</p>
+    {% endif %}
+    {% if resultado_costo_uniforme %}
+        <h2>Resultado Costo Uniforme:</h2>
+        <p>Ruta: {{ resultado_costo_uniforme }}</p>
+        <!-- Agrega aquí cualquier otro detalle que desees mostrar -->
     {% endif %}
 </body>
 </html>
+

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import Dijkstra
+import Costo_uniforme
 
 app = Flask(__name__)
 
@@ -38,7 +39,15 @@ def ejecutar_dijkstra():
     
     costo_viaje = nodo_solucion.get_coste()
     
-    return render_template('index.html', resultado=resultado_str, costo_viaje=costo_viaje)
+    return render_template('index.html', resultado_dijkstra=resultado_str, costo_viaje_dijkstra=costo_viaje)
+
+@app.route('/ejecutar_costo_uniforme', methods=['POST'])
+def ejecutar_costo_uniforme():
+    previos = Costo_uniforme.dijkstra(Costo_uniforme.grafo, Costo_uniforme.salida)
+    camino = Costo_uniforme.reconstruir_camino(previos, Costo_uniforme.nodo_destino)
+    resultado_str = ', '.join(camino)
+    
+    return render_template('index.html', resultado_costo_uniforme=resultado_str)
 
 if __name__ == '__main__':
     app.run(debug=True)
