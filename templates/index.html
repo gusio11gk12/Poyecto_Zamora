@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algoritmo Costo Uniforme</title>
+    <title>Algoritmos de Búsqueda</title>
 </head>
 <body>
-    <h1>Algoritmo Costo uniforme</h1>
+    <h1>Algoritmos de Búsqueda</h1>
     <form action="/ejecutar_dijkstra" method="post">
-        <input type="submit" value="Algoritmo Costo Uniforme">
+        <input type="submit" value="Ejecutar Dijkstra">
     </form>
     <form action="/ejecutar_costo_uniforme" method="post">
-        <input type="submit" value="Algoritmo Dijkstra">
+        <input type="submit" value="Ejecutar Costo Uniforme">
+    </form>
+    <form action="/ejecutar_hill_climbing" method="post">
+        <input type="submit" value="Ejecutar Hill Climbing">
+    </form>
+    <form action="/ejecutar_annealing" method="post">
+        <input type="submit" value="Ejecutar Annealing">
     </form>
     {% if resultado_dijkstra %}
         <h2>Resultado Dijkstra:</h2>
@@ -21,8 +27,20 @@
     {% if resultado_costo_uniforme %}
         <h2>Resultado Costo Uniforme:</h2>
         <p>Ruta: {{ resultado_costo_uniforme }}</p>
-        <!-- Agrega aquí cualquier otro detalle que desees mostrar -->
+    {% endif %}
+    {% if resultado_hill_climbing %}
+        <h2>Resultado Hill Climbing:</h2>
+        <p>Ruta: {{ resultado_hill_climbing }}</p>
+        {% if distancia_total %}
+            <p>Distancia total: {{ distancia_total }}</p>
+        {% endif %}
+    {% endif %}
+    {% if resultado_annealing %}
+        <h2>Resultado Annealing:</h2>
+        <p>Ruta: {{ resultado_annealing }}</p>
+        {% if distancia_total %}
+            <p>Distancia total: {{ distancia_total }}</p>
+        {% endif %}
     {% endif %}
 </body>
 </html>
-

@@ -27,18 +27,23 @@ def reconstruir_camino(previos, nodo):
         nodo = previos[nodo]
     return camino
 
-grafo = {
-    '1': {'2': 3, '3': 6},
-    '2': {'3':2, '4':1},
-    '3': {'4': 4, '5': 2},
-    '4': {'3': 4, '5': 6},
-    '5': {'6': 2, '7':2},
-    '6': {'7': 3},
-    '7': {}
+# Definición de las conexiones del grafo
+conexiones = {
+    'EDO.MEX': {'SLP': 513, 'CDMX': 125},
+    'PUEBLA': {'SLP': 514},
+    'CDMX': {'MICHOACAN': 491, 'SLP': 423, 'EDO.MEX': 125},
+    'MICHOACAN': {'SONORA': 346, 'SLP': 355, 'MONTERREY': 309, 'CDMX': 491},
+    'SLP': {'QRO': 203, 'PUEBLA': 514, 'EDO.MEX': 513, 'SONORA': 603, 'GUADALAJARA': 437, 'CDMX': 423,
+            'MICHOACAN': 355, 'MONTERREY': 313, 'HIDALGO': 599},
+    'QRO': {'SLP': 203, 'HIDALGO': 390},
+    'HIDALGO': {'QRO': 390, 'SLP': 599},
+    'MONTERREY': {'SLP': 313, 'SONORA': 296, 'GUADALAJARA': 394, 'MICHOACAN': 309},
+    'SONORA': {'MONTERREY': 296, 'SLP': 603, 'MICHOACAN': 346},
+    'GUADALAJARA': {'MONTERREY': 394, 'SLP': 437}
 }
 
-salida = '1'
-nodo_destino = '7'  # Cambia este valor al nodo al que deseas llegar
-previos = dijkstra(grafo, salida)
+salida = 'EDO.MEX'
+nodo_destino = 'HIDALGO'
+previos = dijkstra(conexiones, salida)
 camino = reconstruir_camino(previos, nodo_destino)
 print(f"Camino más corto desde el nodo {salida} hasta el nodo {nodo_destino}: {camino}")
